@@ -36,6 +36,13 @@ public class Calculator {
         return false;
     }
 
+    public static boolean сompletionСheck(String userCommand) {
+        if(userCommand.equalsIgnoreCase("stop")){
+            return true;
+        }
+        return false;
+    }
+
     public static void main(String[] args) throws IOException {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -51,7 +58,7 @@ public class Calculator {
 
             System.out.println("Press Enter to continue or type stop to exit");
             input = reader.readLine();
-            if(input.equalsIgnoreCase("stop")){
+            if(Calculator.сompletionСheck(input)){
                 processingIsAvailable = false;
                 break;
             }
