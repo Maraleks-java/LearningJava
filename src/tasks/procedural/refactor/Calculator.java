@@ -47,14 +47,20 @@ public class Calculator {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
+        byte attempts;
+        String input;
+        double firstNumber;
+        double secondNumber;
+        char userCommand;
+        byte stage;
+
         boolean processingIsAvailable = true;
         while (processingIsAvailable){
-            byte attempts = 3;
-            String input;
-            double firstNumber = 0;
-            double secondNumber = 0;
-            char userCommand = 0;
-            byte stage = 1;
+            attempts = 3;
+            firstNumber = 0;
+            secondNumber = 0;
+            userCommand = 0;
+            stage = 1;
 
             System.out.println("Press Enter to continue or type stop to exit");
             input = reader.readLine();
