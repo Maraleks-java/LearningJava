@@ -26,10 +26,10 @@ public class Calculator {
         return a/b;
     }
 
-    public static boolean checkingMathCommands(char userCommand) {
-        char[] commands = {'+', '-', '*', '/' };
-        for (int i = 0; i < commands.length; i++) {
-            if(commands[i] == userCommand) {
+    public static boolean isMathCommand(char userCommand) {
+        char[] mathCommands = {'+', '-', '*', '/' };
+        for (int i = 0; i < mathCommands.length; i++) {
+            if(mathCommands[i] == userCommand) {
                 return true;
             }
         }
@@ -58,7 +58,7 @@ public class Calculator {
 
             System.out.println("Press Enter to continue or type stop to exit");
             input = reader.readLine();
-            if(Calculator.сompletionСheck(input)){
+            if(сompletionСheck(input)){
                 processingIsAvailable = false;
                 break;
             }
@@ -82,7 +82,7 @@ public class Calculator {
                         System.out.println( "Enter the command [+ , -, *, /]");
                         input = reader.readLine();
                         userCommand = input.charAt(0);
-                        if(Calculator.checkingMathCommands(userCommand)){
+                        if(Calculator.isMathCommand(userCommand)){
                             stage++;
                         } else {
                             attempts--;
@@ -93,16 +93,16 @@ public class Calculator {
                     if(stage == 4) {
                         switch (userCommand) {
                             case '+':
-                                System.out.println(Calculator.getSumOfNumbers(firstNumber, secondNumber));
+                                System.out.println(getSumOfNumbers(firstNumber, secondNumber));
                                 break;
                             case '-':
-                                System.out.println(Calculator.getDifferenceOfNumbers(firstNumber, secondNumber));
+                                System.out.println(getDifferenceOfNumbers(firstNumber, secondNumber));
                                 break;
                             case '*':
-                                System.out.println(Calculator.getProductOfNumbers(firstNumber, secondNumber));
+                                System.out.println(getProductOfNumbers(firstNumber, secondNumber));
                                 break;
                             case '/':
-                                System.out.println(Calculator.getRatioOfNumbers(firstNumber, secondNumber));
+                                System.out.println(getRatioOfNumbers(firstNumber, secondNumber));
                                 break;
                         }
                         break;
