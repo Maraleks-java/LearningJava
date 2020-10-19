@@ -25,7 +25,16 @@ public class Calculator {
     public static double getRatioOfNumbers(double a, double b) throws ArithmeticException{
         return a/b;
     }
-    
+
+    public static boolean checkingMathCommands(char userCommand) {
+        char[] commands = {'+', '-', '*', '/' };
+        for (int i = 0; i < commands.length; i++) {
+            if(commands[i] == userCommand) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public static void main(String[] args) throws IOException {
 
@@ -66,14 +75,9 @@ public class Calculator {
                         System.out.println( "Enter the command [+ , -, *, /]");
                         input = reader.readLine();
                         userCommand = input.charAt(0);
-                        char[] commands = {'+', '-', '*', '/' };
-                        for (int i = 0; i < commands.length; i++) {
-                            if(commands[i] == userCommand) {
-                                stage++;
-                                break;
-                            }
-                        }
-                        if(userCommand == 'd') {
+                        if(Calculator.checkingMathCommands(userCommand)){
+                            stage++;
+                        } else {
                             attempts--;
                             System.out.println( "You entered the wrong command! Attempts: " + attempts);
                         }
