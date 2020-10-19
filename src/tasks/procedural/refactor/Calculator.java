@@ -27,9 +27,9 @@ public class Calculator {
     }
 
     public static boolean isMathCommand(char userCommand) {
-        char[] commands = {'+', '-', '*', '/' };
-        for (int i = 0; i < commands.length; i++) {
-            if(commands[i] == userCommand) {
+        char[] mathCommands = {'+', '-', '*', '/' };
+        for (int i = 0; i < mathCommands.length; i++) {
+            if(mathCommands[i] == userCommand) {
                 return true;
             }
         }
