@@ -22,7 +22,7 @@ public class Calculator {
         return a*b;
     }
 
-    public static double getRatioOfNumbers(double a, double b) {
+    public static double getRatioOfNumbers(double a, double b) throws ArithmeticException{
         return a/b;
     }
 
@@ -79,19 +79,19 @@ public class Calculator {
 
                     if(stage > 3) {
                         if(mathematicalProcessing == '+') {
-                            System.out.println(firstNumber + secondNumber);
+                            System.out.println(Calculator.getSumOfNumbers(firstNumber, secondNumber));
                             break;
                         }
                         if(mathematicalProcessing == '-') {
-                            System.out.println(firstNumber - secondNumber);
+                            System.out.println(Calculator.getDifferenceOfNumbers(firstNumber, secondNumber));
                             break;
                         }
                         if(mathematicalProcessing == '*') {
-                            System.out.println(firstNumber * secondNumber);
+                            System.out.println(Calculator.getProductOfNumbers(firstNumber, secondNumber));
                             break;
                         }
                         if(mathematicalProcessing == '/') {
-                            System.out.println(firstNumber / secondNumber);
+                            System.out.println(Calculator.getRatioOfNumbers(firstNumber, secondNumber));
                             break;
                         }
                     }
