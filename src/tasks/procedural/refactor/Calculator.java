@@ -26,7 +26,7 @@ public class Calculator {
         return a/b;
     }
 
-    public static boolean checkingMathCommands(char userCommand) {
+    public static boolean isMathCommand(char userCommand) {
         char[] commands = {'+', '-', '*', '/' };
         for (int i = 0; i < commands.length; i++) {
             if(commands[i] == userCommand) {
@@ -82,7 +82,7 @@ public class Calculator {
                         System.out.println( "Enter the command [+ , -, *, /]");
                         input = reader.readLine();
                         userCommand = input.charAt(0);
-                        if(Calculator.checkingMathCommands(userCommand)){
+                        if(Calculator.isMathCommand(userCommand)){
                             stage++;
                         } else {
                             attempts--;
