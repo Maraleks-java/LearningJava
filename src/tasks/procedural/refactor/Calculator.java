@@ -4,7 +4,28 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * Move the main logic into static methods
+ */
+
 public class Calculator {
+
+    public static double getSumOfNumbers(double a, double b) {
+        return a+b;
+    }
+
+    public static double getDifferenceOfNumbers(double a, double b) {
+        return a-b;
+    }
+
+    public static double getProductOfNumbers(double a, double b) {
+        return a*b;
+    }
+
+    public static double getRatioOfNumbers(double a, double b) {
+        return a/b;
+    }
+
     public static void main(String[] args) throws IOException {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
