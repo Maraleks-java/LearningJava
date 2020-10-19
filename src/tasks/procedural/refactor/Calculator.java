@@ -58,7 +58,7 @@ public class Calculator {
 
             System.out.println("Press Enter to continue or type stop to exit");
             input = reader.readLine();
-            if(Calculator.сompletionСheck(input)){
+            if(сompletionСheck(input)){
                 processingIsAvailable = false;
                 break;
             }
@@ -93,16 +93,16 @@ public class Calculator {
                     if(stage == 4) {
                         switch (userCommand) {
                             case '+':
-                                System.out.println(Calculator.getSumOfNumbers(firstNumber, secondNumber));
+                                System.out.println(getSumOfNumbers(firstNumber, secondNumber));
                                 break;
                             case '-':
-                                System.out.println(Calculator.getDifferenceOfNumbers(firstNumber, secondNumber));
+                                System.out.println(getDifferenceOfNumbers(firstNumber, secondNumber));
                                 break;
                             case '*':
-                                System.out.println(Calculator.getProductOfNumbers(firstNumber, secondNumber));
+                                System.out.println(getProductOfNumbers(firstNumber, secondNumber));
                                 break;
                             case '/':
-                                System.out.println(Calculator.getRatioOfNumbers(firstNumber, secondNumber));
+                                System.out.println(getRatioOfNumbers(firstNumber, secondNumber));
                                 break;
                         }
                         break;
