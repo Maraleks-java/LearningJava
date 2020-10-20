@@ -10,6 +10,8 @@ import java.io.InputStreamReader;
 
 public class Calculator {
 
+    private final static char[] MATH_COMMANDS = {'+', '-', '*', '/' };
+
     public static double getSumOfNumbers(double a, double b) {
         return a+b;
     }
@@ -27,9 +29,9 @@ public class Calculator {
     }
 
     public static boolean isMathCommand(char userCommand) {
-        char[] mathCommands = {'+', '-', '*', '/' };
-        for (int i = 0; i < mathCommands.length; i++) {
-            if(mathCommands[i] == userCommand) {
+
+        for (int i = 0; i < MATH_COMMANDS.length; i++) {
+            if(MATH_COMMANDS[i] == userCommand) {
                 return true;
             }
         }
