@@ -47,10 +47,10 @@ public class Calculator {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        final int FIRST_STAGE_OF_CALCULATION = 1;
-        final int SECOND_STAGE_OF_CALCULATION = 2;
-        final int THIRD_STAGE_OF_CALCULATION = 3;
-        final int FOURTH_STAGE_OF_CALCULATION = 4;
+        final int ENTER_FIRST_NUMBER = 1;
+        final int ENTER_COMMAND = 2;
+        final int ENTER_SECOND_NUMBER = 3;
+        final int PERFORM_CALCULATION = 4;
 
         byte attempts;
         String input;
@@ -77,19 +77,19 @@ public class Calculator {
             while (attempts > 0) {
                 try {
 
-                    if(stage == FIRST_STAGE_OF_CALCULATION || stage == THIRD_STAGE_OF_CALCULATION) {
+                    if(stage == ENTER_FIRST_NUMBER || stage == ENTER_SECOND_NUMBER) {
                         System.out.println("Enter the number.");
                         input = reader.readLine();
-                        if(stage == FIRST_STAGE_OF_CALCULATION) {
+                        if(stage == ENTER_FIRST_NUMBER) {
                             firstNumber = Double.parseDouble(input);
                         }
-                        if(stage == THIRD_STAGE_OF_CALCULATION) {
+                        if(stage == ENTER_SECOND_NUMBER) {
                             secondNumber = Double.parseDouble(input);
                         }
                         stage++;
                     }
 
-                    if(stage == SECOND_STAGE_OF_CALCULATION) {
+                    if(stage == ENTER_COMMAND) {
                         System.out.println( "Enter the command [+ , -, *, /]");
                         input = reader.readLine();
                         userCommand = input.charAt(0);
@@ -101,7 +101,7 @@ public class Calculator {
                         }
                     }
 
-                    if(stage == FOURTH_STAGE_OF_CALCULATION) {
+                    if(stage == PERFORM_CALCULATION) {
                         switch (userCommand) {
                             case '+':
                                 System.out.println(getSumOfNumbers(firstNumber, secondNumber));
