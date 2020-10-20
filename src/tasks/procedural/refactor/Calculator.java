@@ -47,14 +47,25 @@ public class Calculator {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
+        final int FIRST_STAGE = 1;
+        final int SECOND_STAGE = 2;
+        final int THIRD_STAGE = 3;
+        final int FOURTH_STAGE = 4;
+
+        byte attempts;
+        String input;
+        double firstNumber;
+        double secondNumber;
+        char userCommand;
+        byte stage;
+
         boolean processingIsAvailable = true;
         while (processingIsAvailable){
-            byte attempts = 3;
-            String input;
-            double firstNumber = 0;
-            double secondNumber = 0;
-            char userCommand = 0;
-            byte stage = 1;
+            attempts = 3;
+            firstNumber = 0;
+            secondNumber = 0;
+            userCommand = 0;
+            stage = 1;
 
             System.out.println("Press Enter to continue or type stop to exit");
             input = reader.readLine();
@@ -66,7 +77,7 @@ public class Calculator {
             while (attempts > 0) {
                 try {
 
-                    if(stage == 1 || stage == 3) {
+                    if(stage == FIRST_STAGE || stage == THIRD_STAGE) {
                         System.out.println("Enter the number.");
                         input = reader.readLine();
                         if(stage == 1) {
@@ -78,7 +89,7 @@ public class Calculator {
                         stage++;
                     }
 
-                    if(stage == 2) {
+                    if(stage == SECOND_STAGE) {
                         System.out.println( "Enter the command [+ , -, *, /]");
                         input = reader.readLine();
                         userCommand = input.charAt(0);
@@ -90,7 +101,7 @@ public class Calculator {
                         }
                     }
 
-                    if(stage == 4) {
+                    if(stage == FOURTH_STAGE) {
                         switch (userCommand) {
                             case '+':
                                 System.out.println(getSumOfNumbers(firstNumber, secondNumber));
