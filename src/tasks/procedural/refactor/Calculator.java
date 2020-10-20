@@ -47,6 +47,11 @@ public class Calculator {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
+        final int FIRST_STAGE = 1;
+        final int SECOND_STAGE = 2;
+        final int THIRD_STAGE = 3;
+        final int FOURTH_STAGE = 4;
+
         byte attempts;
         String input;
         double firstNumber;
@@ -72,7 +77,7 @@ public class Calculator {
             while (attempts > 0) {
                 try {
 
-                    if(stage == 1 || stage == 3) {
+                    if(stage == FIRST_STAGE || stage == THIRD_STAGE) {
                         System.out.println("Enter the number.");
                         input = reader.readLine();
                         if(stage == 1) {
@@ -84,7 +89,7 @@ public class Calculator {
                         stage++;
                     }
 
-                    if(stage == 2) {
+                    if(stage == SECOND_STAGE) {
                         System.out.println( "Enter the command [+ , -, *, /]");
                         input = reader.readLine();
                         userCommand = input.charAt(0);
@@ -96,7 +101,7 @@ public class Calculator {
                         }
                     }
 
-                    if(stage == 4) {
+                    if(stage == FOURTH_STAGE) {
                         switch (userCommand) {
                             case '+':
                                 System.out.println(getSumOfNumbers(firstNumber, secondNumber));
