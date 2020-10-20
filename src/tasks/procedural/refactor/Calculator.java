@@ -44,6 +44,10 @@ public class Calculator {
         return false;
     }
 
+    public static void displayResultOfCalculations(double result) {
+        System.out.println(result);
+    }
+
     public static void main(String[] args) throws IOException {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -83,8 +87,7 @@ public class Calculator {
                         input = reader.readLine();
                         if(stage == ENTER_FIRST_NUMBER) {
                             firstNumber = Double.parseDouble(input);
-                        }
-                        if(stage == ENTER_SECOND_NUMBER) {
+                        } else {
                             secondNumber = Double.parseDouble(input);
                         }
                         stage++;
@@ -105,16 +108,16 @@ public class Calculator {
                     if(stage == PERFORM_CALCULATION) {
                         switch (userCommand) {
                             case '+':
-                                System.out.println(getSumOfNumbers(firstNumber, secondNumber));
+                                displayResultOfCalculations(getSumOfNumbers(firstNumber, secondNumber));
                                 break;
                             case '-':
-                                System.out.println(getDifferenceOfNumbers(firstNumber, secondNumber));
+                                displayResultOfCalculations(getDifferenceOfNumbers(firstNumber, secondNumber));
                                 break;
                             case '*':
-                                System.out.println(getProductOfNumbers(firstNumber, secondNumber));
+                                displayResultOfCalculations(getProductOfNumbers(firstNumber, secondNumber));
                                 break;
                             case '/':
-                                System.out.println(getRatioOfNumbers(firstNumber, secondNumber));
+                                displayResultOfCalculations(getRatioOfNumbers(firstNumber, secondNumber));
                                 break;
                         }
                         break;
