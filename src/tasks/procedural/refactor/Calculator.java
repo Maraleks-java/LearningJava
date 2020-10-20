@@ -29,8 +29,8 @@ public class Calculator {
     }
 
     public static boolean isMathCommand(char userCommand) {
-        for (int i: MATH_COMMANDS) {
-            if(i == userCommand) {
+        for (int mathCommand: MATH_COMMANDS) {
+            if(userCommand == mathCommand) {
                 return true;
             }
         }
