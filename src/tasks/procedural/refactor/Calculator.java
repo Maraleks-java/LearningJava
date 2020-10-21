@@ -3,6 +3,9 @@ package tasks.procedural.refactor;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Move the main logic into static methods
@@ -44,8 +47,15 @@ public class Calculator {
         return false;
     }
 
-    public static void displayResultOfCalculations(double result) {
-        System.out.println(result);
+    public static void displayInformation(String info) {
+        System.out.println();
+        System.out.print(LocalDate.now() + " ");
+        System.out.println(getFormattedDate(LocalTime.now()));
+        System.out.println(info);
+    }
+
+    private static String getFormattedDate(LocalTime time) {
+        return time.format(DateTimeFormatter.ofPattern("hh:mm:ss"));
     }
 
     public static void main(String[] args) throws IOException {
@@ -72,7 +82,7 @@ public class Calculator {
             userCommand = 0;
             stage = 1;
 
-            System.out.println("Press Enter to continue or type stop to exit");
+            displayInformation("Press Enter to continue or type stop to exit");
             input = reader.readLine();
             if(сompletionСheck(input)){
                 processingIsAvailable = false;
@@ -83,7 +93,7 @@ public class Calculator {
                 try {
 
                     if(stage == ENTER_FIRST_NUMBER || stage == ENTER_SECOND_NUMBER) {
-                        System.out.println("Enter the number.");
+                        displayInformation("Enter the number.");
                         input = reader.readLine();
                         if(stage == ENTER_FIRST_NUMBER) {
                             firstNumber = Double.parseDouble(input);
@@ -94,30 +104,30 @@ public class Calculator {
                     }
 
                     if(stage == ENTER_COMMAND) {
-                        System.out.println( "Enter the command [+ , -, *, /]");
+                        displayInformation("Enter the command [+ , -, *, /]");
                         input = reader.readLine();
                         userCommand = input.charAt(0);
                         if(Calculator.isMathCommand(userCommand)){
                             stage++;
                         } else {
                             attempts--;
-                            System.out.println( "You entered the wrong command! Attempts: " + attempts);
+                            displayInformation("You entered the wrong command! Attempts: " + attempts);
                         }
                     }
 
                     if(stage == PERFORM_CALCULATION) {
                         switch (userCommand) {
                             case '+':
-                                displayResultOfCalculations(getSumOfNumbers(firstNumber, secondNumber));
+                                displayInformation(String.valueOf(getSumOfNumbers(firstNumber, secondNumber)));
                                 break;
                             case '-':
-                                displayResultOfCalculations(getDifferenceOfNumbers(firstNumber, secondNumber));
+                                displayInformation(String.valueOf(getDifferenceOfNumbers(firstNumber, secondNumber)));
                                 break;
                             case '*':
-                                displayResultOfCalculations(getProductOfNumbers(firstNumber, secondNumber));
+                                displayInformation(String.valueOf(getProductOfNumbers(firstNumber, secondNumber)));
                                 break;
                             case '/':
-                                displayResultOfCalculations(getRatioOfNumbers(firstNumber, secondNumber));
+                                displayInformation(String.valueOf(getRatioOfNumbers(firstNumber, secondNumber)));
                                 break;
                         }
                         break;
@@ -125,7 +135,7 @@ public class Calculator {
 
                 } catch (NumberFormatException e) {
                     attempts--;
-                    System.out.println("You didn't enter a number. Try again! Attempts: " + attempts);
+                    displayInformation("You didn't enter a number. Try again! Attempts: " + attempts);
                 }
             }
         }
