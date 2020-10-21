@@ -30,8 +30,7 @@ public class Calculator {
         char userCommand;
         int stage;
 
-        boolean processingIsAvailable = true;
-        while (processingIsAvailable){
+        while (true){
             attempts = 3;
             firstNumber = 0;
             secondNumber = 0;
