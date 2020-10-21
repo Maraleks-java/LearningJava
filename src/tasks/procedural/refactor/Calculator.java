@@ -3,8 +3,7 @@ package tasks.procedural.refactor;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -47,15 +46,13 @@ public class Calculator {
         return false;
     }
 
-    public static void displayInformation(String info) {
-        System.out.println();
-        System.out.print(LocalDate.now() + " ");
-        System.out.println(getFormattedDate(LocalTime.now()));
-        System.out.println(info);
+    public static void message(String info) {
+        System.out.print(getFormattedDate(LocalDateTime.now()));
+        System.out.println(" " + info);
     }
 
-    private static String getFormattedDate(LocalTime time) {
-        return time.format(DateTimeFormatter.ofPattern("hh:mm:ss"));
+    private static String getFormattedDate(LocalDateTime dateTime) {
+        return dateTime.format(DateTimeFormatter.ofPattern("yyyy.MM.dd hh:mm:ss"));
     }
 
     public static void main(String[] args) throws IOException {
@@ -82,7 +79,7 @@ public class Calculator {
             userCommand = 0;
             stage = 1;
 
-            displayInformation("Press Enter to continue or type stop to exit");
+            message("Press Enter to continue or type stop to exit");
             input = reader.readLine();
             if(сompletionСheck(input)){
                 processingIsAvailable = false;
@@ -93,7 +90,7 @@ public class Calculator {
                 try {
 
                     if(stage == ENTER_FIRST_NUMBER || stage == ENTER_SECOND_NUMBER) {
-                        displayInformation("Enter the number.");
+                        message("Enter the number.");
                         input = reader.readLine();
                         if(stage == ENTER_FIRST_NUMBER) {
                             firstNumber = Double.parseDouble(input);
@@ -104,30 +101,30 @@ public class Calculator {
                     }
 
                     if(stage == ENTER_COMMAND) {
-                        displayInformation("Enter the command [+ , -, *, /]");
+                        message("Enter the command [+ , -, *, /]");
                         input = reader.readLine();
                         userCommand = input.charAt(0);
                         if(Calculator.isMathCommand(userCommand)){
                             stage++;
                         } else {
                             attempts--;
-                            displayInformation("You entered the wrong command! Attempts: " + attempts);
+                            message("You entered the wrong command! Attempts: " + attempts);
                         }
                     }
 
                     if(stage == PERFORM_CALCULATION) {
                         switch (userCommand) {
                             case '+':
-                                displayInformation(String.valueOf(getSumOfNumbers(firstNumber, secondNumber)));
+                                message(String.valueOf(getSumOfNumbers(firstNumber, secondNumber)));
                                 break;
                             case '-':
-                                displayInformation(String.valueOf(getDifferenceOfNumbers(firstNumber, secondNumber)));
+                                message(String.valueOf(getDifferenceOfNumbers(firstNumber, secondNumber)));
                                 break;
                             case '*':
-                                displayInformation(String.valueOf(getProductOfNumbers(firstNumber, secondNumber)));
+                                message(String.valueOf(getProductOfNumbers(firstNumber, secondNumber)));
                                 break;
                             case '/':
-                                displayInformation(String.valueOf(getRatioOfNumbers(firstNumber, secondNumber)));
+                                message(String.valueOf(getRatioOfNumbers(firstNumber, secondNumber)));
                                 break;
                         }
                         break;
@@ -135,7 +132,7 @@ public class Calculator {
 
                 } catch (NumberFormatException e) {
                     attempts--;
-                    displayInformation("You didn't enter a number. Try again! Attempts: " + attempts);
+                    message("You didn't enter a number. Try again! Attempts: " + attempts);
                 }
             }
         }
