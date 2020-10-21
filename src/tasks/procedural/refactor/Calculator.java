@@ -79,7 +79,7 @@ public class Calculator {
             userCommand = 0;
             stage = 1;
 
-            message("Press Enter to continue or type stop to exit");
+            message("Press Enter to continue or enter stop to exit");
             input = reader.readLine();
             if(сompletionСheck(input)){
                 processingIsAvailable = false;
