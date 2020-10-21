@@ -46,9 +46,9 @@ public class Calculator {
         return false;
     }
 
-    public static void message(String info) {
+    public static void message(String message) {
         System.out.print(getFormattedDate(LocalDateTime.now()));
-        System.out.println(" " + info);
+        System.out.println(" " + message);
     }
 
     private static String getFormattedDate(LocalDateTime dateTime) {
