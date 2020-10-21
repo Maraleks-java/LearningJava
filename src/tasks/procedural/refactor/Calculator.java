@@ -12,23 +12,23 @@ import java.time.format.DateTimeFormatter;
 
 public class Calculator {
 
+    private static final int ENTER_FIRST_NUMBER = 1;
+    private static final int ENTER_COMMAND = 2;
+    private static final int ENTER_SECOND_NUMBER = 3;
+    private static final int PERFORM_CALCULATION = 4;
+
     private final static char[] MATH_COMMANDS = {'+', '-', '*', '/' };
 
     public static void main(String[] args) throws IOException {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        final int ENTER_FIRST_NUMBER = 1;
-        final int ENTER_COMMAND = 2;
-        final int ENTER_SECOND_NUMBER = 3;
-        final int PERFORM_CALCULATION = 4;
-
         byte attempts;
         String input;
         double firstNumber;
         double secondNumber;
         char userCommand;
-        byte stage;
+        int stage;
 
         boolean processingIsAvailable = true;
         while (processingIsAvailable){
@@ -36,12 +36,11 @@ public class Calculator {
             firstNumber = 0;
             secondNumber = 0;
             userCommand = 0;
-            stage = 1;
+            stage = ENTER_FIRST_NUMBER;
 
             displayMessage("Press Enter to continue or enter stop to exit");
             input = reader.readLine();
             if(isStopCommand(input)){
-                processingIsAvailable = false;
                 break;
             }
 
@@ -72,25 +71,22 @@ public class Calculator {
                     }
 
                     if(stage == PERFORM_CALCULATION) {
-                        double result;
+                        double result = 0;
                         switch (userCommand) {
                             case '+':
                                 result = getSumOfNumbers(firstNumber, secondNumber);
-                                displayMessage(String.valueOf(result));
                                 break;
                             case '-':
                                 result = getDifferenceOfNumbers(firstNumber, secondNumber);
-                                displayMessage(String.valueOf(result));
                                 break;
                             case '*':
                                 result = getProductOfNumbers(firstNumber, secondNumber);
-                                displayMessage(String.valueOf(result));
                                 break;
                             case '/':
                                 result = getRatioOfNumbers(firstNumber, secondNumber);
-                                displayMessage(String.valueOf(result));
                                 break;
                         }
+                        displayMessage(String.valueOf(result));
                         break;
                     }
 
@@ -119,7 +115,7 @@ public class Calculator {
     }
 
     public static boolean isMathCommand(char userCommand) {
-        for (int mathCommand: MATH_COMMANDS) {
+        for (char mathCommand: MATH_COMMANDS) {
             if(userCommand == mathCommand) {
                 return true;
             }
