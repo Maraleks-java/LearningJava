@@ -17,7 +17,7 @@ public class Calculator {
     private static final int ENTER_SECOND_NUMBER = 3;
     private static final int PERFORM_CALCULATION = 4;
 
-    private final static char[] MATH_COMMANDS = {'+', '-', '*', '/' };
+    private static final char[] MATH_COMMANDS = {'+', '-', '*', '/' };
 
     public static void main(String[] args) throws IOException {
 
