@@ -1,4 +1,4 @@
-package tasks.oop.task3.view;
+package tasks.oop.task3.view.massages;
 
 public enum Messages {
 
@@ -10,13 +10,14 @@ public enum Messages {
     NUMBER_INPUT_ERROR("You didn't enter a number. Try again! Attempts: "),
     COMMAND_INPUT_ERROR("You entered the wrong command! Attempts: ");
 
-    private String text;
-    Messages(String text) {
-        this.text = text;
+    private String title;
+
+    private Messages(String text) {
+        this.title = text;
     }
 
     public String getMessageText() {
-        return text;
+        return title;
     }
 
 }
