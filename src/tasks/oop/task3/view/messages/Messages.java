@@ -1,4 +1,4 @@
-package tasks.oop.task3.view.massages;
+package tasks.oop.task3.view.messages;
 
 public enum Messages {
 

@@ -1,7 +1,7 @@
 package tasks.oop.task3.calculator;
 
 import tasks.oop.task3.input.Input;
-import tasks.oop.task3.view.massages.Messages;
+import tasks.oop.task3.view.messages.Messages;
 import tasks.oop.task3.view.output.Output;
 
 import java.io.IOException;
