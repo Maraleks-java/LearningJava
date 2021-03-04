@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 
 public class Output {
 
-    public Output(){
+    public Output() {
 
     }
 

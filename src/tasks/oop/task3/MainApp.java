@@ -1,7 +1,6 @@
 package tasks.oop.task3;
 
-import tasks.oop.task3.calculator.CalculatorThree;
-import tasks.oop.task3.input.Input;
+import tasks.oop.task3.calculator.Calculator;
 
 import java.io.IOException;
 
@@ -13,7 +12,7 @@ import java.io.IOException;
 
 public class MainApp {
     public static void main(String[] args) throws IOException {
-        CalculatorThree calculator = new CalculatorThree();
+        Calculator calculator = new Calculator();
         calculator.start();
     }
 }

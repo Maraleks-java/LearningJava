@@ -6,13 +6,13 @@ import tasks.oop.task3.view.output.Output;
 
 import java.io.IOException;
 
-public class CalculatorThree {
+public class Calculator {
 
-    private Input input;
+    private final Input input;
 
-    private Output output;
+    private final Output output;
 
-    private static final int OUTPUTTING_THE_RESULT = 0;
+    private static final int INPUT_PROMPT = 0;
     private static final int ENTER_FIRST_NUMBER = 1;
     private static final int ENTER_COMMAND = 2;
     private static final int ENTER_SECOND_NUMBER = 3;
@@ -20,13 +20,13 @@ public class CalculatorThree {
 
     private static final char[] MATH_COMMANDS = {'+', '-', '*', '/'};
 
-    private double[] expression;
+    private final double[] expression;
 
     private int stage;
 
     private int attempts;
 
-    public CalculatorThree() {
+    public Calculator() {
         input = new Input();
         output = new Output();
         expression = new double[3];
@@ -36,7 +36,7 @@ public class CalculatorThree {
 
     public void start() throws IOException {
         while (true) {
-            if(attempts == 0) {
+            if (attempts == 0) {
                 attempts = 3;
             }
             output.displayMessage(Messages.CONTINUE_OR_STOP.getMessageText());
@@ -44,7 +44,7 @@ public class CalculatorThree {
                 break;
             }
             while (attempts > 0) {
-                if(stage == OUTPUTTING_THE_RESULT) {
+                if (stage == INPUT_PROMPT) {
                     stage = ENTER_FIRST_NUMBER;
                     break;
                 }
@@ -72,10 +72,12 @@ public class CalculatorThree {
                             stage = PERFORM_CALCULATION;
                             break;
                         case (PERFORM_CALCULATION):
-                            stage = OUTPUTTING_THE_RESULT;
+                            stage = INPUT_PROMPT;
                             double result = getResultOfCalculations(expression);
                             output.displayMessage(String.valueOf(result));
                             break;
+                        default:
+                            // Do something...
                     }
                 } catch (NumberFormatException exception) {
                     attempts--;
@@ -100,13 +102,15 @@ public class CalculatorThree {
             case ('/'):
                 result = getRatioOfNumbers(expression[0], expression[2]);
                 break;
+            default:
+                //Do something
         }
         return result;
     }
 
     public static boolean isMathCommand(char userCommand) {
-        for (char mathCommand: MATH_COMMANDS) {
-            if(userCommand == mathCommand) {
+        for (char mathCommand : MATH_COMMANDS) {
+            if (userCommand == mathCommand) {
                 return true;
             }
         }
@@ -114,19 +118,19 @@ public class CalculatorThree {
     }
 
     private double getSumOfNumbers(double a, double b) {
-        return a+b;
+        return a + b;
     }
 
     private double getDifferenceOfNumbers(double a, double b) {
-        return a-b;
+        return a - b;
     }
 
     private double getProductOfNumbers(double a, double b) {
-        return a*b;
+        return a * b;
     }
 
-    private double getRatioOfNumbers(double a, double b) throws ArithmeticException{
-        return a/b;
+    private double getRatioOfNumbers(double a, double b) throws ArithmeticException {
+        return a / b;
     }
 
 }
