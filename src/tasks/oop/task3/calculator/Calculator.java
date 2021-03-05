@@ -7,8 +7,8 @@ import tasks.oop.task3.view.messages.Messages;
 import tasks.oop.task3.view.output.Output;
 
 /**
- * @author Alexandr Markov
  * @version 1.1
+ * @author Alexandr Markov
  */
 public class Calculator {
 

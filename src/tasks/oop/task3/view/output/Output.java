@@ -24,7 +24,7 @@ public class Output {
 
     private static String getFormattedDate(final LocalDateTime dateTime) {
         return dateTime.format(DateTimeFormatter.
-                ofPattern("yyyy.MM.dd hh:mm:ss"));
+                               ofPattern("yyyy.MM.dd hh:mm:ss"));
     }
 
 }
