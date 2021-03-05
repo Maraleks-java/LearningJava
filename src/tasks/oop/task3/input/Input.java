@@ -15,7 +15,7 @@ public class Input {
     }
 
     /**
-     * @return Custom number.
+     * @return The number entered by the user.
      * @throws IOException
      * @throws NumberFormatException
      */

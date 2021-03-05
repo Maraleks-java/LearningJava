@@ -1,56 +1,69 @@
 package tasks.oop.task3.calculator;
 
+import java.io.IOException;
+
 import tasks.oop.task3.input.Input;
 import tasks.oop.task3.view.messages.Messages;
 import tasks.oop.task3.view.output.Output;
-
-import java.io.IOException;
 
 /**
  * @author Alexandr Markov
  * @version 1.1
  */
-
 public class Calculator {
+
     /**
      */
     private static final int NUMBER_OF_CELLS = 3;
+
     /**
      */
     private static final int STARTING_NUMBER_OF_ATTEMPTS = 3;
-    /**
-     */
-    private final Input input;
-    /**
-     */
-    private final Output output;
+
     /**
      */
     private static final int INPUT_PROMPT = 0;
+
     /**
      */
     private static final int ENTER_FIRST_NUMBER = 1;
+
     /**
      */
     private static final int ENTER_COMMAND = 2;
+
     /**
      */
     private static final int ENTER_SECOND_NUMBER = 3;
+
     /**
      */
     private static final int PERFORM_CALCULATION = 4;
+
     /**
      */
     private static final char[] MATH_COMMANDS = {'+', '-', '*', '/'};
+
     /**
      */
-    private final double[] expression;
+    private Input input;
+
+    /**
+     */
+    private Output output;
+
+    /**
+     */
+    private double[] expression;
+
     /**
      */
     private int stage;
+
     /**
      */
     private int attemptCounter;
+
     /**
      */
     public Calculator() {
@@ -60,6 +73,7 @@ public class Calculator {
         attemptCounter = STARTING_NUMBER_OF_ATTEMPTS;
         stage = ENTER_FIRST_NUMBER;
     }
+
     /**
      * @throws IOException
      */
@@ -123,6 +137,7 @@ public class Calculator {
             }
         }
     }
+
     /**
      * @param expression
      * @return Calculation result.
@@ -147,6 +162,7 @@ public class Calculator {
         }
         return result;
     }
+
     /**
      * @param userCommand
      * @return Returns true if the user's command is in the command array.
@@ -159,6 +175,7 @@ public class Calculator {
         }
         return false;
     }
+
     /**
      * @param a
      * @param b
@@ -167,6 +184,7 @@ public class Calculator {
     private double getSumOfNumbers(final double a, final double b) {
         return a + b;
     }
+
     /**
      * @param a
      * @param b
@@ -175,6 +193,7 @@ public class Calculator {
     private double getDifferenceOfNumbers(final double a, final double b) {
         return a - b;
     }
+
     /**
      * @param a
      * @param b
@@ -183,6 +202,7 @@ public class Calculator {
     private double getProductOfNumbers(final double a, final double b) {
         return a * b;
     }
+
     /**
      * @param a
      * @param b
