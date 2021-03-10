@@ -1,3 +1,6 @@
+/*
+ * %W% %E% Aleksandr Markov
+ */
 package tasks.oop.task3.calculator;
 
 import java.io.IOException;
@@ -146,16 +149,16 @@ public class Calculator {
         double result = 0;
         switch ((char) expression[1]) {
             case ('+'):
-                result = getSumOfNumbers(expression[0], expression[2]);
+                result = expression[0] + expression[2];
                 break;
             case ('-'):
-                result = getDifferenceOfNumbers(expression[0], expression[2]);
+                result = expression[0] - expression[2];
                 break;
             case ('*'):
-                result = getProductOfNumbers(expression[0], expression[2]);
+                result = expression[0] * expression[2];
                 break;
             case ('/'):
-                result = getRatioOfNumbers(expression[0], expression[2]);
+                result = expression[0] / expression[2];
                 break;
             default:
                 //Do something
@@ -174,44 +177,6 @@ public class Calculator {
             }
         }
         return false;
-    }
-
-    /**
-     * @param a
-     * @param b
-     * @return Calculation result
-     */
-    private double getSumOfNumbers(final double a, final double b) {
-        return a + b;
-    }
-
-    /**
-     * @param a
-     * @param b
-     * @return Calculation result
-     */
-    private double getDifferenceOfNumbers(final double a, final double b) {
-        return a - b;
-    }
-
-    /**
-     * @param a
-     * @param b
-     * @return Calculation result
-     */
-    private double getProductOfNumbers(final double a, final double b) {
-        return a * b;
-    }
-
-    /**
-     * @param a
-     * @param b
-     * @return Calculation result
-     * @throws ArithmeticException
-     */
-    private double getRatioOfNumbers(final double a, final double b) throws
-            ArithmeticException {
-        return a / b;
     }
 
 }
