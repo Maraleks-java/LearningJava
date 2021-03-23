@@ -16,10 +16,13 @@ import tasks.oop.task3.view.output.Output;
 public class Calculator {
 
     /**
+     * The constant determines the size of the expression,
+     * taking into account the signs
      */
     private static final int NUMBER_OF_CELLS = 3;
 
     /**
+     * The constant determines the number of acceptable errors when entering
      */
     private static final int STARTING_NUMBER_OF_ATTEMPTS = 3;
 
@@ -76,7 +79,7 @@ public class Calculator {
     /**
      * @throws IOException
      */
-    public void countUntilYouComplete() throws IOException {
+    public void process() throws IOException {
         while (true) {
             if (attemptCounter == 0) {
                 attemptCounter = STARTING_NUMBER_OF_ATTEMPTS;
