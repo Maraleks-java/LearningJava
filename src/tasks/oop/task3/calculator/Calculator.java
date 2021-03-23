@@ -76,7 +76,7 @@ public class Calculator {
     /**
      * @throws IOException
      */
-    public void start() throws IOException {
+    public void countUntilYouComplete() throws IOException {
         while (true) {
             if (attemptCounter == 0) {
                 attemptCounter = STARTING_NUMBER_OF_ATTEMPTS;
@@ -141,13 +141,13 @@ public class Calculator {
                 case (ENTER_FIRST_NUMBER):
                     output.displayMessage(Messages.ENTER_FIRST_NUMBER.
                             getMessageText());
-                    expression[0] = input.readsNumberFromKeyboard();
+                    expression[0] = input.readOnlyNumbersFromKeyboard();
                     this.stage = ENTER_COMMAND;
                     break;
                 case (ENTER_SECOND_NUMBER):
                     output.displayMessage(Messages.
                             ENTER_SECOND_NUMBER.getMessageText());
-                    expression[2] = input.readsNumberFromKeyboard();
+                    expression[2] = input.readOnlyNumbersFromKeyboard();
                     this.stage = PERFORM_CALCULATION;
                     break;
                 default:
@@ -170,7 +170,7 @@ public class Calculator {
                 output.displayMessage(Messages.ENTER_COMMAND.
                         getMessageText());
                 char userCommand = (char) input.
-                        readsCodeCommandFromKeyboard();
+                        readKeyboardCommandCode();
                 if (isMathCommand(userCommand)) {
                     expression[1] = (double) userCommand;
                     this.stage = ENTER_SECOND_NUMBER;
