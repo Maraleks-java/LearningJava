@@ -97,7 +97,7 @@ public class Calculator {
      * @param expression
      * @return Calculation result.
      */
-    private double getResultOfCalculations(final double[] expression) {
+    private double getCalculationResult(final double[] expression) {
         double result = 0;
         switch ((char) expression[1]) {
             case ('+'):
@@ -184,7 +184,7 @@ public class Calculator {
                 break;
             case (PERFORM_CALCULATION):
                 this.stage = ENTER_FIRST_NUMBER;
-                double result = getResultOfCalculations(expression);
+                double result = getCalculationResult(expression);
                 output.displayMessage(String.valueOf(result));
                 break;
             default:
