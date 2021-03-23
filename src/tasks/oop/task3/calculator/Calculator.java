@@ -27,46 +27,57 @@ public class Calculator {
     private static final int STARTING_NUMBER_OF_ATTEMPTS = 3;
 
     /**
+     * The constant defines the current stage of the calculator operation.
      */
     private static final int ENTER_FIRST_NUMBER = 1;
 
     /**
+     * The constant defines the current stage of the calculator operation.
      */
     private static final int ENTER_COMMAND = 2;
 
     /**
+     * The constant defines the current stage of the calculator operation.
      */
     private static final int ENTER_SECOND_NUMBER = 3;
 
     /**
+     * The constant defines the current stage of the calculator operation.
      */
     private static final int PERFORM_CALCULATION = 4;
 
     /**
+     * The array stores valid math commands
      */
     private static final char[] MATH_COMMANDS = {'+', '-', '*', '/'};
 
     /**
+     * A reference to an object that is responsible for the input method
      */
     private Input input;
 
     /**
+     * Reference to the object responsible for the output method
      */
     private Output output;
 
     /**
+     * An array storing a ready-made expression
      */
     private double[] expression;
 
     /**
+     * Stores the current stage of the calculator
      */
     private int stage;
 
     /**
+     * Determines how many correct input attempts are left before restarting the calculator
      */
     private int attemptCounter;
 
     /**
+     * Default constructor
      */
     public Calculator() {
         input = new Input();
@@ -154,6 +165,7 @@ public class Calculator {
                     this.stage = PERFORM_CALCULATION;
                     break;
                 default:
+                    break;
             }
         } catch (NumberFormatException exception) {
             attemptCounter--;
