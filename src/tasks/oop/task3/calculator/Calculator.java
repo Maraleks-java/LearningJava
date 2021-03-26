@@ -10,8 +10,8 @@ import tasks.oop.task3.view.messages.Messages;
 import tasks.oop.task3.view.output.Output;
 
 /**
- * @version 1.1
  * @author Alexandr Markov
+ * @version 1.1
  */
 public class Calculator {
 
@@ -54,17 +54,17 @@ public class Calculator {
     /**
      * A reference to an object that is responsible for the input method
      */
-    private Input input;
+    private final Input input;
 
     /**
      * Reference to the object responsible for the output method
      */
-    private Output output;
+    private final Output output;
 
     /**
      * An array storing a ready-made expression
      */
-    private double[] expression;
+    private final double[] expression;
 
     /**
      * Stores the current stage of the calculator
@@ -88,55 +88,36 @@ public class Calculator {
     }
 
     /**
-     * @throws IOException
+     * @throws IOException If passed an empty object
+     * Application launch method.
      */
     public void process() throws IOException {
         while (true) {
-            if (attemptCounter == 0) {
-                attemptCounter = STARTING_NUMBER_OF_ATTEMPTS;
-            }
             output.displayMessage(Messages.CONTINUE_OR_STOP.getMessageText());
-            if (input.isStopCommand()) {
+            if (input.isStopCommand())
                 break;
-            }
-            while (attemptCounter > 0) {
-                readNumber(stage);
-                readCommand(stage);
-                readNumber(stage);
+            while (attemptCounter > -1) {
+                if (attemptCounter == 0) {
+                    attemptCounter = STARTING_NUMBER_OF_ATTEMPTS;
+                    break;
+                }
+                if (stage == ENTER_FIRST_NUMBER || stage == ENTER_SECOND_NUMBER) {
+                    readNumber(stage);
+                } else if (stage == ENTER_COMMAND) {
+                    readCommand(stage);
+                } else {
+                    readCommand(stage);
+                    break;
+                }
             }
         }
     }
 
     /**
-     * @param expression
-     * @return Calculation result.
-     */
-    private double getCalculationResult(final double[] expression) {
-        double result = 0;
-        switch ((char) expression[1]) {
-            case ('+'):
-                result = expression[0] + expression[2];
-                break;
-            case ('-'):
-                result = expression[0] - expression[2];
-                break;
-            case ('*'):
-                result = expression[0] * expression[2];
-                break;
-            case ('/'):
-                result = expression[0] / expression[2];
-                break;
-            default:
-                break;
-        }
-        return result;
-    }
-
-    /**
-     * @param userCommand
+     * @param userCommand The command entered by the user
      * @return Returns true if the user's command is in the command array.
      */
-    public static boolean isMathCommand(final char userCommand) {
+    private static boolean isMathCommand(final char userCommand) {
         for (char mathCommand : MATH_COMMANDS) {
             if (userCommand == mathCommand) {
                 return true;
@@ -146,8 +127,8 @@ public class Calculator {
     }
 
     /**
-     * @param stage
-     * @throws IOException
+     * @param stage takes the calculation step
+     * @throws IOException If passed an empty object
      */
     private void readNumber(final int stage) throws IOException {
         try {
@@ -176,8 +157,8 @@ public class Calculator {
     }
 
     /**
-     * @param stage
-     * @throws IOException
+     * @param stage takes the calculation step
+     * @throws IOException If passed an empty object
      */
     private void readCommand(final int stage) throws IOException {
         switch (stage) {
@@ -187,7 +168,7 @@ public class Calculator {
                 char userCommand = (char) input.
                         readKeyboardCommandCode();
                 if (isMathCommand(userCommand)) {
-                    expression[1] = (double) userCommand;
+                    expression[1] = userCommand;
                     this.stage = ENTER_SECOND_NUMBER;
                     break;
                 } else {
@@ -206,5 +187,31 @@ public class Calculator {
                 break;
         }
     }
+
+    /**
+     * @param expression Ready expression
+     * @return Calculation result.
+     */
+    private double getCalculationResult(final double[] expression) {
+        double result = 0;
+        switch ((char) expression[1]) {
+            case ('+'):
+                result = expression[0] + expression[2];
+                break;
+            case ('-'):
+                result = expression[0] - expression[2];
+                break;
+            case ('*'):
+                result = expression[0] * expression[2];
+                break;
+            case ('/'):
+                result = expression[0] / expression[2];
+                break;
+            default:
+                break;
+        }
+        return result;
+    }
+
 }
 

@@ -11,14 +11,21 @@ import java.io.InputStreamReader;
 /**
  * @version 1.0
  * @author Alexandr Markov
+ * The "Input" class describes how to enter information.
+ * This version implements a method of entering only numbers from the keyboard,
+ * or only characters
  */
 public class Input {
 
     /**
+     * Field for storing the object responsible
+     * for reading the stream from the keyboard
      */
-    private BufferedReader reader;
+    private final BufferedReader reader;
 
     /**
+     * Default constructor.
+     * Creates an object of the "reader" class when called
      */
     public Input() {
         reader = new BufferedReader(new InputStreamReader(System.in));
@@ -26,29 +33,33 @@ public class Input {
 
     /**
      * @return The number entered by the user.
-     * @throws IOException
-     * @throws NumberFormatException
+     * @throws IOException If passed an empty object
+     * @throws NumberFormatException if your input format is invalid
+     * The method reads only numbers from the keyboard.
      */
     public double readOnlyNumbersFromKeyboard() throws IOException,
             NumberFormatException {
         String input = reader.readLine();
-        double number = 0;
+        double number;
         number = Double.parseDouble(input);
         return number;
     }
 
     /**
      * @return Returns the code of the first custom character.
-     * @throws IOException
+     * @throws IOException If passed an empty object.
+     * The method reads the first character in the string and returns its code
      */
     public double readKeyboardCommandCode() throws IOException {
         return reader.readLine().charAt(0);
     }
 
     /**
-     * @return Returns true if the user entered the word "stop"
+     * @return boolean
      * in a case insensitive manner.
      * @throws IOException
+     * The method asks to enter a code word regardless of its case.
+     * Returns true if it was entered correctly.
      */
     public boolean isStopCommand() throws IOException {
         String userCommand;

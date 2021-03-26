@@ -6,13 +6,17 @@ import java.time.format.DateTimeFormatter;
 /**
  * @version 1.0
  * @author Alexandr Markov
+ * The Output class contains methods for outputting any text information.
+ * In the current version, only output to the screen is implemented.
  */
 public class Output {
+
     /**
      * Default constructor.
      */
     public Output() {
-
+        // If the constructor is declared,
+        // but does not have a body, the check asks to write a nested comment.
     }
 
     /**
@@ -26,8 +30,9 @@ public class Output {
     }
 
     /**
-     * @param dateTime
+     * @param dateTime object LocalDateTime
      * @return String representation of date and time.
+     * The method determines the format of the date and time
      */
     private static String getFormattedDate(final LocalDateTime dateTime) {
         return dateTime.format(DateTimeFormatter.

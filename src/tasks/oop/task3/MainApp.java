@@ -1,8 +1,8 @@
 package tasks.oop.task3;
 
-import tasks.oop.task3.calculator.Calculator;
-
 import java.io.IOException;
+
+import tasks.oop.task3.calculator.Calculator;
 
 /**
  * @author Alexandr Markov
@@ -13,14 +13,20 @@ import java.io.IOException;
  */
 
 public final class MainApp {
-    private MainApp() {
-    }
+
     /**
-     * @param args
-     * @throws IOException
+     * Default constructor.
+     */
+    private MainApp() {
+
+    }
+
+    /**
+     * @param args args
+     * @throws IOException If passed an empty object
      */
     public static void main(final String[] args) throws IOException {
         Calculator calculator = new Calculator();
-        calculator.start();
+        calculator.process();
     }
 }
