@@ -27,22 +27,22 @@ public class Calculator {
     private static final int STARTING_NUMBER_OF_ATTEMPTS = 3;
 
     /**
-     * The constant defines the current stage of the calculator operation.
+     * The constant stores the calculation step in numerical representation
      */
     private static final int ENTER_FIRST_NUMBER = 1;
 
     /**
-     * The constant defines the current stage of the calculator operation.
+     * The constant stores the calculation step in numerical representation
      */
     private static final int ENTER_COMMAND = 2;
 
     /**
-     * The constant defines the current stage of the calculator operation.
+     * The constant stores the calculation step in numerical representation
      */
     private static final int ENTER_SECOND_NUMBER = 3;
 
     /**
-     * The constant defines the current stage of the calculator operation.
+     * The constant stores the calculation step in numerical representation
      */
     private static final int PERFORM_CALCULATION = 4;
 
