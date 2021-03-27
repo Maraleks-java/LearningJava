@@ -35,7 +35,7 @@ public class Input {
      * @return The number entered by the user.
      * @throws IOException If passed an empty object
      * @throws NumberFormatException if your input format is invalid
-     * The method reads only numbers from the keyboard.
+     * The method reads only number from the keyboard.
      */
     public double readOnlyNumbersFromKeyboard() throws IOException,
             NumberFormatException {
