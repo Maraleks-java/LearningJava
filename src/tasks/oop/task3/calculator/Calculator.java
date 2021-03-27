@@ -3,11 +3,11 @@
  */
 package tasks.oop.task3.calculator;
 
-import java.io.IOException;
-
 import tasks.oop.task3.input.Input;
 import tasks.oop.task3.view.messages.Messages;
 import tasks.oop.task3.view.output.Output;
+
+import java.io.IOException;
 
 /**
  * @author Alexandr Markov
@@ -89,7 +89,7 @@ public class Calculator {
 
     /**
      * @throws IOException If passed an empty object
-     * Application launch method.
+     *                     Application launch method.
      */
     public void process() throws IOException {
         while (true) {
@@ -106,7 +106,8 @@ public class Calculator {
                 } else if (stage == ENTER_COMMAND) {
                     readCommand(stage);
                 } else {
-                    readCommand(stage);
+                    double result = getCalculationResult(expression);
+                    output.displayMessage(String.valueOf(result));
                     break;
                 }
             }
@@ -161,30 +162,18 @@ public class Calculator {
      * @throws IOException If passed an empty object
      */
     private void readCommand(final int stage) throws IOException {
-        switch (stage) {
-            case (ENTER_COMMAND):
-                output.displayMessage(Messages.ENTER_COMMAND.
-                        getMessageText());
-                char userCommand = (char) input.
-                        readKeyboardCommandCode();
-                if (isMathCommand(userCommand)) {
-                    expression[1] = userCommand;
-                    this.stage = ENTER_SECOND_NUMBER;
-                    break;
-                } else {
-                    attemptCounter--;
-                    output.displayMessage(Messages.
-                            COMMAND_INPUT_ERROR.getMessageText()
-                            + attemptCounter);
-                }
-                break;
-            case (PERFORM_CALCULATION):
-                this.stage = ENTER_FIRST_NUMBER;
-                double result = getCalculationResult(expression);
-                output.displayMessage(String.valueOf(result));
-                break;
-            default:
-                break;
+        output.displayMessage(Messages.ENTER_COMMAND.
+                getMessageText());
+        char userCommand = (char) input.
+                readKeyboardCommandCode();
+        if (isMathCommand(userCommand)) {
+            expression[1] = userCommand;
+            this.stage = ENTER_SECOND_NUMBER;
+        } else {
+            attemptCounter--;
+            output.displayMessage(Messages.
+                    COMMAND_INPUT_ERROR.getMessageText()
+                    + attemptCounter);
         }
     }
 
@@ -210,8 +199,8 @@ public class Calculator {
             default:
                 break;
         }
+        stage = ENTER_FIRST_NUMBER;
         return result;
     }
-
 }
 
