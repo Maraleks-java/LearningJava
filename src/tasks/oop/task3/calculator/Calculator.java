@@ -101,11 +101,10 @@ public class Calculator {
                     attemptCounter = STARTING_NUMBER_OF_ATTEMPTS;
                     break;
                 }
-                if (stage == ENTER_FIRST_NUMBER || stage == ENTER_SECOND_NUMBER) {
-                    readNumber(stage);
-                } else if (stage == ENTER_COMMAND) {
+                readNumber(stage);
+                if (stage == ENTER_COMMAND) {
                     readCommand(stage);
-                } else {
+                } else if (stage == PERFORM_CALCULATION) {
                     double result = getCalculationResult(expression);
                     output.displayMessage(String.valueOf(result));
                     break;
