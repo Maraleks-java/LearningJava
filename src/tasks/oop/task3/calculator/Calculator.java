@@ -109,6 +109,10 @@ public class Calculator {
         }
     }
 
+    /**
+     * @return true If there are still attempts
+     * Method for checking the number of attempts.
+     */
     private boolean stillTrying() {
         if(attemptCounter == 0) {
             attemptCounter = STARTING_NUMBER_OF_ATTEMPTS;
