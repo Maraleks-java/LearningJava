@@ -1,3 +1,6 @@
+/*
+ * %W% %E% Aleksandr Markov
+ */
 package tasks.oop.task3.view.messages;
 
 /**
