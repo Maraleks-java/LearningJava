@@ -50,7 +50,7 @@ public class Input {
      * @throws IOException If passed an empty object.
      * The method reads the first character in the string and returns its code
      */
-    public double readKeyboardCommandCode() throws IOException {
+    public double readCharacterFromKeyboard() throws IOException {
         return reader.readLine().charAt(0);
     }
 

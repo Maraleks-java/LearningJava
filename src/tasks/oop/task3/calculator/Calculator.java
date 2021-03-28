@@ -164,7 +164,7 @@ public class Calculator {
         output.displayMessage(Messages.ENTER_COMMAND.
                 getMessageText());
         char userCommand = (char) input.
-                readKeyboardCommandCode();
+                readCharacterFromKeyboard();
         if (isMathCommand(userCommand)) {
             expression[1] = userCommand;
             this.stage = ENTER_SECOND_NUMBER;
