@@ -96,14 +96,10 @@ public class Calculator {
             output.displayMessage(Messages.CONTINUE_OR_STOP.getMessageText());
             if (input.isStopCommand())
                 break;
-            while (attemptCounter > -1) {
-                if (attemptCounter == 0) {
-                    attemptCounter = STARTING_NUMBER_OF_ATTEMPTS;
-                    break;
-                }
+            while (stillTrying()) {
                 readNumber(stage);
                 if (stage == ENTER_COMMAND) {
-                    readCommand(stage);
+                    readCommand();
                 } else if (stage == PERFORM_CALCULATION) {
                     double result = getCalculationResult(expression);
                     output.displayMessage(String.valueOf(result));
@@ -113,17 +109,13 @@ public class Calculator {
         }
     }
 
-    /**
-     * @param userCommand The command entered by the user
-     * @return Returns true if the user's command is in the command array.
-     */
-    private static boolean isMathCommand(final char userCommand) {
-        for (char mathCommand : MATH_COMMANDS) {
-            if (userCommand == mathCommand) {
-                return true;
-            }
+    private boolean stillTrying() {
+        if(attemptCounter == 0) {
+            attemptCounter = STARTING_NUMBER_OF_ATTEMPTS;
+            return false;
+        } else {
+            return true;
         }
-        return false;
     }
 
     /**
@@ -157,10 +149,9 @@ public class Calculator {
     }
 
     /**
-     * @param stage takes the calculation step
      * @throws IOException If passed an empty object
      */
-    private void readCommand(final int stage) throws IOException {
+    private void readCommand() throws IOException {
         output.displayMessage(Messages.ENTER_COMMAND.
                 getMessageText());
         char userCommand = (char) input.
@@ -174,6 +165,19 @@ public class Calculator {
                     COMMAND_INPUT_ERROR.getMessageText()
                     + attemptCounter);
         }
+    }
+
+    /**
+     * @param userCommand The command entered by the user
+     * @return Returns true if the user's command is in the command array.
+     */
+    private static boolean isMathCommand(final char userCommand) {
+        for (char mathCommand : MATH_COMMANDS) {
+            if (userCommand == mathCommand) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
