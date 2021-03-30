@@ -12,63 +12,41 @@ import tasks.oop.task3.view.output.Output;
 /**
  * @author Alexandr Markov
  * @version 1.1
+ * Class describing the logic of the console calculator.
  */
 public class Calculator {
 
-    /**
-     * The constant determines the size of the expression,
-     * taking into account the signs
-     */
+    /** Expression size */
     private static final int NUMBER_OF_CELLS = 3;
 
-    /**
-     * The constant determines the number of acceptable errors when entering
-     */
+    /** Initial number of attempts for correct input */
     private static final int STARTING_NUMBER_OF_ATTEMPTS = 3;
 
-    /**
-     * The constant stores the calculation step in numerical representation
-     */
+    /** Stage of execution */
     private static final int ENTER_FIRST_NUMBER = 1;
 
-    /**
-     * The constant stores the calculation step in numerical representation
-     */
+    /** Stage of execution */
     private static final int ENTER_COMMAND = 2;
 
-    /**
-     * The constant stores the calculation step in numerical representation
-     */
+    /** Stage of execution */
     private static final int ENTER_SECOND_NUMBER = 3;
 
-    /**
-     * The constant stores the calculation step in numerical representation
-     */
+    /** Stage of execution */
     private static final int PERFORM_CALCULATION = 4;
 
-    /**
-     * The array stores valid math commands
-     */
+    /** Recorded expression */
     private static final char[] MATH_COMMANDS = {'+', '-', '*', '/'};
 
-    /**
-     * A reference to an object that is responsible for the input method
-     */
+    /** A reference to an object that is responsible for the input method */
     private final Input input;
 
-    /**
-     * Reference to the object responsible for the output method
-     */
+    /** Reference to the object responsible for the output method */
     private final Output output;
 
-    /**
-     * An array storing a ready-made expression
-     */
+    /** An array storing a ready-made expression */
     private final double[] expression;
 
-    /**
-     * Stores the current stage of the calculator
-     */
+    /** Current stage of calculation */
     private int stage;
 
     /**
@@ -208,5 +186,6 @@ public class Calculator {
         stage = ENTER_FIRST_NUMBER;
         return result;
     }
+    
 }
 
