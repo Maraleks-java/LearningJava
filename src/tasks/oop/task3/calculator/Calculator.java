@@ -96,7 +96,7 @@ public class Calculator {
             output.displayMessage(Messages.CONTINUE_OR_STOP.getMessageText());
             if (input.isStopCommand())
                 break;
-            while (stillTrying()) {
+            while (startOver()) {
                 readNumber(stage);
                 if (stage == ENTER_COMMAND) {
                     readCommand();
@@ -113,7 +113,7 @@ public class Calculator {
      * @return true If there are still attempts
      * Method for checking the number of attempts.
      */
-    private boolean stillTrying() {
+    private boolean startOver() {
         if(attemptCounter == 0) {
             attemptCounter = STARTING_NUMBER_OF_ATTEMPTS;
             return false;
