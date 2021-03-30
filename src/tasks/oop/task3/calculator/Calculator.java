@@ -117,9 +117,8 @@ public class Calculator {
         if(attemptCounter == 0) {
             attemptCounter = STARTING_NUMBER_OF_ATTEMPTS;
             return false;
-        } else {
-            return true;
         }
+        return true;
     }
 
     /**
