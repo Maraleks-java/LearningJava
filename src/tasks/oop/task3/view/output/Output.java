@@ -15,14 +15,6 @@ import java.time.format.DateTimeFormatter;
 public class Output {
 
     /**
-     * Default constructor.
-     */
-    public Output() {
-        // If the constructor is declared,
-        // but does not have a body, the check asks to write a nested comment.
-    }
-
-    /**
      * @param message
      * The method accepts the text of the message.
      * Sets the date and time of the output and prints to the console.
