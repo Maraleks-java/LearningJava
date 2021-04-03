@@ -37,7 +37,7 @@ public class Input {
      * @throws NumberFormatException if your input format is invalid
      * The method reads only number from the keyboard.
      */
-    public double readOnlyNumbersFromKeyboard() throws IOException,
+    public double readOnlyNumberFromKeyboard() throws IOException,
             NumberFormatException {
         String input = reader.readLine();
         double number;
