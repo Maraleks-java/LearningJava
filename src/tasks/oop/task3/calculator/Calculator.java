@@ -61,8 +61,6 @@ public class Calculator {
         input = new Input();
         output = new Output();
         expression = new double[NUMBER_OF_CELLS];
-        attemptCounter = STARTING_NUMBER_OF_ATTEMPTS;
-        stage = ENTER_FIRST_NUMBER;
     }
 
     /**
@@ -71,32 +69,29 @@ public class Calculator {
      */
     public void process() throws IOException {
         while (true) {
+            stage = ENTER_FIRST_NUMBER;
+            attemptCounter = STARTING_NUMBER_OF_ATTEMPTS;
             output.displayMessage(Messages.CONTINUE_OR_STOP.getMessageText());
             if (input.isStopCommand())
                 break;
-            while (startOver()) {
-                readNumber(stage);
-                if (stage == ENTER_COMMAND) {
-                    readCommand();
-                } else if (stage == PERFORM_CALCULATION) {
-                    double result = getCalculationResult(expression);
-                    output.displayMessage(String.valueOf(result));
-                    break;
+            do {
+                switch (stage) {
+                    case ENTER_FIRST_NUMBER:
+                    case ENTER_SECOND_NUMBER:
+                        readNumber(stage);
+                        break;
+                    case ENTER_COMMAND:
+                        readCommand();
+                        break;
+                    case PERFORM_CALCULATION:
+                        double result = getCalculationResult(expression);
+                        output.displayMessage(String.valueOf(result));
+                        break;
+                    default:
+                        break;
                 }
-            }
+            } while (attemptCounter != 0);
         }
-    }
-
-    /**
-     * @return true If there are still attempts
-     * Method for checking the number of attempts.
-     */
-    private boolean startOver() {
-        if(attemptCounter == 0) {
-            attemptCounter = STARTING_NUMBER_OF_ATTEMPTS;
-            return false;
-        }
-        return true;
     }
 
     /**
@@ -107,25 +102,24 @@ public class Calculator {
         try {
             switch (stage) {
                 case (ENTER_FIRST_NUMBER):
-                    output.displayMessage(Messages.ENTER_FIRST_NUMBER.
-                            getMessageText());
-                    expression[0] = input.readOnlyNumbersFromKeyboard();
+                    output.displayMessage(Messages.
+                            ENTER_FIRST_NUMBER.getMessageText());
+                    expression[0] = input.readOnlyNumberFromKeyboard();
                     this.stage = ENTER_COMMAND;
                     break;
                 case (ENTER_SECOND_NUMBER):
                     output.displayMessage(Messages.
                             ENTER_SECOND_NUMBER.getMessageText());
-                    expression[2] = input.readOnlyNumbersFromKeyboard();
+                    expression[2] = input.readOnlyNumberFromKeyboard();
                     this.stage = PERFORM_CALCULATION;
                     break;
                 default:
                     break;
             }
         } catch (NumberFormatException exception) {
-            attemptCounter--;
             output.displayMessage(Messages.
                     NUMBER_INPUT_ERROR.getMessageText()
-                    + attemptCounter);
+                    + --attemptCounter);
         }
     }
 
@@ -133,18 +127,22 @@ public class Calculator {
      * @throws IOException If passed an empty object
      */
     private void readCommand() throws IOException {
-        output.displayMessage(Messages.ENTER_COMMAND.
-                getMessageText());
-        char userCommand = (char) input.
-                readCharacterFromKeyboard();
-        if (isMathCommand(userCommand)) {
-            expression[1] = userCommand;
-            this.stage = ENTER_SECOND_NUMBER;
-        } else {
-            attemptCounter--;
+        try {
+
+            output.displayMessage(Messages.
+                    ENTER_COMMAND.getMessageText());
+            char userCommand = (char) input.
+                    readCharacterFromKeyboard();
+            if (isMathCommand(userCommand)) {
+                expression[1] = userCommand;
+                this.stage = ENTER_SECOND_NUMBER;
+            } else {
+                throw new NumberFormatException();
+            }
+        } catch (StringIndexOutOfBoundsException | NumberFormatException exception) {
             output.displayMessage(Messages.
                     COMMAND_INPUT_ERROR.getMessageText()
-                    + attemptCounter);
+                    + --attemptCounter);
         }
     }
 
@@ -186,6 +184,6 @@ public class Calculator {
         stage = ENTER_FIRST_NUMBER;
         return result;
     }
-    
+
 }
 
