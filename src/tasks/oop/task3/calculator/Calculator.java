@@ -106,13 +106,13 @@ public class Calculator {
                             ENTER_FIRST_NUMBER.getMessageText());
                     expression[0] = input.readOnlyNumberFromKeyboard();
                     this.stage = ENTER_COMMAND;
-                    break;
+                    return;
                 case (ENTER_SECOND_NUMBER):
                     output.displayMessage(Messages.
                             ENTER_SECOND_NUMBER.getMessageText());
                     expression[2] = input.readOnlyNumberFromKeyboard();
                     this.stage = PERFORM_CALCULATION;
-                    break;
+                    return;
                 default:
                     break;
             }
@@ -128,7 +128,6 @@ public class Calculator {
      */
     private void readCommand() throws IOException {
         try {
-
             output.displayMessage(Messages.
                     ENTER_COMMAND.getMessageText());
             char userCommand = (char) input.
