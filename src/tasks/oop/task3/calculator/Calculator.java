@@ -34,7 +34,7 @@ public class Calculator {
     /** Stage of execution */
     private static final int PERFORM_CALCULATION = 4;
 
-    /** Recorded expression */
+    /** List of available commands */
     private static final char[] MATH_COMMANDS = {'+', '-', '*', '/'};
 
     /** A reference to an object that is responsible for the input method */
