@@ -18,13 +18,6 @@ import tasks.oop.task3.calculator.Calculator;
 public final class MainApp {
 
     /**
-     * Default constructor.
-     */
-    private MainApp() {
-
-    }
-
-    /**
      * @param args args
      * @throws IOException If passed an empty object
      */

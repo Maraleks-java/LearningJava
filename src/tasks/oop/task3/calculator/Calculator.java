@@ -65,7 +65,7 @@ public class Calculator {
 
     /**
      * @throws IOException If passed an empty object
-     *                     Application launch method.
+     * Application launch method.
      */
     public void process() throws IOException {
         while (true) {

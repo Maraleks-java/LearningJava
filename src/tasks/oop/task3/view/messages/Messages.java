@@ -26,7 +26,7 @@ public enum Messages {
 
     /**
      * @param text message
-     * Constructor "Enum".
+     * Constructor "Enam".
      */
     Messages(final String text) {
         this.title = text;
