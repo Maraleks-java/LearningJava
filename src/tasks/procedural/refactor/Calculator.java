@@ -17,7 +17,7 @@ public class Calculator {
     private static final int ENTER_SECOND_NUMBER = 3;
     private static final int PERFORM_CALCULATION = 4;
 
-    private static final char[] MATH_COMMANDS = {'+', '-', '*', '/' };
+    private static final char[] MATH_COMMANDS = {'+', '-', '*', '/'};
 
     public static void main(String[] args) throws IOException {
 
@@ -30,7 +30,7 @@ public class Calculator {
         char userCommand;
         int stage;
 
-        while (true){
+        while (true) {
             attempts = 3;
             firstNumber = 0;
             secondNumber = 0;
@@ -39,17 +39,17 @@ public class Calculator {
 
             displayMessage("Press Enter to continue or enter stop to exit");
             input = reader.readLine();
-            if(isStopCommand(input)){
+            if (isStopCommand(input)) {
                 break;
             }
 
             while (attempts > 0) {
                 try {
 
-                    if(stage == ENTER_FIRST_NUMBER || stage == ENTER_SECOND_NUMBER) {
+                    if (stage == ENTER_FIRST_NUMBER || stage == ENTER_SECOND_NUMBER) {
                         displayMessage("Enter the number.");
                         input = reader.readLine();
-                        if(stage == ENTER_FIRST_NUMBER) {
+                        if (stage == ENTER_FIRST_NUMBER) {
                             firstNumber = Double.parseDouble(input);
                         } else {
                             secondNumber = Double.parseDouble(input);
@@ -57,11 +57,11 @@ public class Calculator {
                         stage++;
                     }
 
-                    if(stage == ENTER_COMMAND) {
+                    if (stage == ENTER_COMMAND) {
                         displayMessage("Enter the command [+ , -, *, /]");
                         input = reader.readLine();
                         userCommand = input.charAt(0);
-                        if(isMathCommand(userCommand)){
+                        if (isMathCommand(userCommand)) {
                             stage++;
                         } else {
                             attempts--;
@@ -69,7 +69,7 @@ public class Calculator {
                         }
                     }
 
-                    if(stage == PERFORM_CALCULATION) {
+                    if (stage == PERFORM_CALCULATION) {
                         double result = 0;
                         switch (userCommand) {
                             case '+':
@@ -107,15 +107,15 @@ public class Calculator {
     }
 
     public static boolean isStopCommand(String userCommand) {
-        if(userCommand.equalsIgnoreCase("stop")){
+        if (userCommand.equalsIgnoreCase("stop")) {
             return true;
         }
         return false;
     }
 
     public static boolean isMathCommand(char userCommand) {
-        for (char mathCommand: MATH_COMMANDS) {
-            if(userCommand == mathCommand) {
+        for (char mathCommand : MATH_COMMANDS) {
+            if (userCommand == mathCommand) {
                 return true;
             }
         }
@@ -123,19 +123,19 @@ public class Calculator {
     }
 
     public static double getSumOfNumbers(double a, double b) {
-        return a+b;
+        return a + b;
     }
 
     public static double getDifferenceOfNumbers(double a, double b) {
-        return a-b;
+        return a - b;
     }
 
     public static double getProductOfNumbers(double a, double b) {
-        return a*b;
+        return a * b;
     }
 
-    public static double getRatioOfNumbers(double a, double b) throws ArithmeticException{
-        return a/b;
+    public static double getRatioOfNumbers(double a, double b) throws ArithmeticException {
+        return a / b;
     }
 
 }
